@@ -32,7 +32,7 @@ Azure Cognitive Search には、フリーテキスト検索から高度に指定
 # 事前準備
 
 ## Simple Cognitive Search Tester のダウンロード
-Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。極めてシンプルに作ってあるのでダウンロードして解凍するだけで、インストール作業は一切必要ありません。[こちら](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/raw/89092a48ec9017db84210d3c485b4744d185843b/gui/simple-cognitive-search-tester.zip)からダウンロードできます。ダウンロードしたら、**simple-cognitive-search-tester.zip** ファイルを任意のフォルダに解凍してください。
+Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。極めてシンプルに作ってあるのでダウンロードして解凍するだけで、インストール作業は一切必要ありません。[こちら](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/raw/main/gui/simple-cognitive-search-tester.zip)からダウンロードできます。ダウンロードしたら、**simple-cognitive-search-tester.zip** ファイルを任意のフォルダに解凍してください。
 
 ## 接続情報の設定
 
