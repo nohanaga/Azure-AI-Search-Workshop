@@ -47,6 +47,11 @@ metadata_storage_last_modified desc
 ```
 ドキュメントの最終更新が新しいもの順にソートされます。
 
+### 問題
+
+1. ファイルサイズが大きい順にソートされるようにしてください。
+1. ファイルの拡張子ごとにソートした後、ファイルの最終更新が新しい順にソートされるようにしてください。
+
 [Azure Cognitive Search での OData $orderby 構文](https://docs.microsoft.com/ja-jp/azure/search/search-query-odata-orderby)
 
 # フィルター($filter)
@@ -87,6 +92,11 @@ imageTags フィールドに person を含むドキュメントを検索しま�
 
 [Azure Cognitive Search での OData コレクション演算子 - any と all](https://docs.microsoft.com/ja-jp/azure/search/search-query-odata-collection-operators)
 
+### 問題
+
+1. ドキュメントに人(person)が含まれていて、かつ、シャツ(shirt)を着ている写真を含むドキュメントを 1件に特定してください。
+1. ビル・ゲイツ(Bill Gates)の写真を含むドキュメントを 1件に特定してください。
+1. ファイルサイズが 100 KB から 500 KB の範囲にあるドキュメントを検索してください。
 
 # ファセット(facet)
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -109,6 +119,13 @@ facet パラメータに以下のように指定します。
 
 このように指定すると、ドキュメントのファイルサイズを 10,000 バイトごとに区分サマリーして表示します。
 より詳細な解説は、[クエリ パラメーター](https://docs.microsoft.com/ja-jp/rest/api/searchservice/Search-Documents#query-parameters)の facet 項目を参照してください。
+
+### 問題
+
+1. keyphrases フィールドのファセットを上位 20 件まで表示できるようにします。
+1. ファイルの拡張子をファセットに追加してください。上位 5 件まで表示できるようにします。
+1. ファイルの最終更新日付を "日にち" ごとに区分分けして表示できるようにします。
+
 
 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](https://docs.microsoft.com/ja-jp/azure/search/search-faceted-navigation)
 
@@ -135,6 +152,7 @@ Postman を利用している方は、API 一覧の「10 - Suggester」を利用
 <img src="./media/search/007.jpg" />
 
 [サジェスト (Azure Cognitive Search REST API)](https://docs.microsoft.com/ja-jp/rest/api/searchservice/suggestions)
+
 
 
 # まとめ
