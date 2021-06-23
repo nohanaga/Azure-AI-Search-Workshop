@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "b3b83eea-e710-4f97-80d1-6a81fcd625e5",
+		"name": "Cognitive Search Pipeline APIs 2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01 - Create a datasource",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"description\" : \"Demo files to demonstrate cognitive search capabilities.\",  \r\n    \"type\" : \"azureblob\",\r\n    \"credentials\" : { \r\n    \t\"connectionString\": \"{{env_storage_connection_string}}\"\r\n    },  \r\n\t\"container\" : { \r\n\t\t\"name\" : \"{{env_storage_container}}\"\r\n\t}\r\n}"
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/datasources/{{index_name}}-datasource?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"datasources",
+						"{{index_name}}-datasource"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 - Create Index",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fields\": [\r\n   {\r\n      \"name\": \"content\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"sortable\": false,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_content_type\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": false,\r\n      \"searchable\": false,\r\n      \"sortable\": false,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_size\",\r\n      \"type\": \"Edm.Int64\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"sortable\": true,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_last_modified\",\r\n      \"type\": \"Edm.DateTimeOffset\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"sortable\": true,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_content_md5\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": false,\r\n      \"searchable\": false,\r\n      \"sortable\": false,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_name\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"sortable\": false,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_path\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"sortable\": false,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_storage_file_extension\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"key\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"sortable\": true,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"metadata_content_type\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": false,\r\n      \"searchable\": false,\r\n      \"sortable\": false,\r\n      \"analyzer\": null,\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"people\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"organizations\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"locations\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"keyphrases\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"language\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"key\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"sortable\": true,\r\n      \"analyzer\": \"standard.lucene\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"merged_content\",\r\n      \"type\": \"Edm.String\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"key\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"sortable\": false,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"text\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"layoutText\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": false,\r\n      \"filterable\": false,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"ja.microsoft\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"imageTags\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"standard.lucene\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    },\r\n    {\r\n      \"name\": \"imageCaption\",\r\n      \"type\": \"Collection(Edm.String)\",\r\n      \"facetable\": true,\r\n      \"filterable\": true,\r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"analyzer\": \"standard.lucene\",\r\n      \"indexAnalyzer\": null,\r\n      \"searchAnalyzer\": null,\r\n      \"synonymMaps\": [],\r\n      \"fields\": []\r\n    }\r\n  ],\r\n  \"suggesters\": [\r\n    {\r\n      \"name\": \"sg1\",\r\n      \"searchMode\": \"analyzingInfixMatching\",\r\n      \"sourceFields\": [\r\n        \"merged_content\"\r\n      ]\r\n    }\r\n  ],\r\n  \"scoringProfiles\": [],\r\n  \"defaultScoringProfile\": \"\",\r\n  \"corsOptions\": {\r\n    \"allowedOrigins\": [\r\n      \"*\"\r\n    ],\r\n    \"maxAgeInSeconds\": null\r\n  },\r\n  \"analyzers\": [],\r\n  \"charFilters\": [],\r\n  \"tokenFilters\": [],\r\n  \"tokenizers\": [],\r\n  \"similarity\": {\r\n    \"@odata.type\": \"#Microsoft.Azure.Search.BM25Similarity\",\r\n    \"k1\": null,\r\n    \"b\": null\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexes/{{index_name}}?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{index_name}}"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 - Create a skillset",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"Extract entities, detect language and extract key-phrases\",\r\n  \"skills\":\r\n  [\r\n   {\r\n      \"@odata.type\": \"#Microsoft.Skills.Text.EntityRecognitionSkill\",\r\n      \"name\": \"#1\",\r\n      \"description\": null,\r\n      \"context\": \"/document/merged_content\",\r\n      \"categories\": [\r\n        \"Person\",\r\n        \"Quantity\",\r\n        \"Organization\",\r\n        \"URL\",\r\n        \"Email\",\r\n        \"Location\",\r\n        \"DateTime\"\r\n      ],\r\n      \"defaultLanguageCode\": \"en\",\r\n      \"minimumPrecision\": 0.8,\r\n      \"includeTypelessEntities\": null,\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"text\",\r\n          \"source\": \"/document/merged_content\"\r\n        },\r\n        {\r\n          \"name\": \"languageCode\",\r\n          \"source\": \"/document/language\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"persons\",\r\n          \"targetName\": \"people\"\r\n        },\r\n        {\r\n          \"name\": \"organizations\",\r\n          \"targetName\": \"organizations\"\r\n        },\r\n        {\r\n          \"name\": \"locations\",\r\n          \"targetName\": \"locations\"\r\n        },\r\n        {\r\n          \"name\": \"entities\",\r\n          \"targetName\": \"entities\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"@odata.type\": \"#Microsoft.Skills.Text.KeyPhraseExtractionSkill\",\r\n      \"name\": \"#2\",\r\n      \"description\": null,\r\n      \"context\": \"/document/merged_content\",\r\n      \"defaultLanguageCode\": \"en\",\r\n      \"maxKeyPhraseCount\": 20,\r\n      \"modelVersion\": null,\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"text\",\r\n          \"source\": \"/document/merged_content\"\r\n        },\r\n        {\r\n          \"name\": \"languageCode\",\r\n          \"source\": \"/document/language\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"keyPhrases\",\r\n          \"targetName\": \"keyphrases\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"@odata.type\": \"#Microsoft.Skills.Text.LanguageDetectionSkill\",\r\n      \"name\": \"#3\",\r\n      \"description\": null,\r\n      \"context\": \"/document\",\r\n      \"defaultCountryHint\": null,\r\n      \"modelVersion\": null,\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"text\",\r\n          \"source\": \"/document/merged_content\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"languageCode\",\r\n          \"targetName\": \"language\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"@odata.type\": \"#Microsoft.Skills.Text.MergeSkill\",\r\n      \"name\": \"#4\",\r\n      \"description\": null,\r\n      \"context\": \"/document\",\r\n      \"insertPreTag\": \" \",\r\n      \"insertPostTag\": \" \",\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"text\",\r\n          \"source\": \"/document/content\"\r\n        },\r\n        {\r\n          \"name\": \"itemsToInsert\",\r\n          \"source\": \"/document/normalized_images/*/text\"\r\n        },\r\n        {\r\n          \"name\": \"offsets\",\r\n          \"source\": \"/document/normalized_images/*/contentOffset\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"mergedText\",\r\n          \"targetName\": \"merged_content\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"@odata.type\": \"#Microsoft.Skills.Vision.OcrSkill\",\r\n      \"name\": \"#5\",\r\n      \"description\": null,\r\n      \"context\": \"/document/normalized_images/*\",\r\n      \"textExtractionAlgorithm\": null,\r\n      \"lineEnding\": \"Space\",\r\n      \"defaultLanguageCode\": \"ja\",\r\n      \"detectOrientation\": true,\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"image\",\r\n          \"source\": \"/document/normalized_images/*\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"text\",\r\n          \"targetName\": \"text\"\r\n        },\r\n        {\r\n          \"name\": \"layoutText\",\r\n          \"targetName\": \"layoutText\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"@odata.type\": \"#Microsoft.Skills.Vision.ImageAnalysisSkill\",\r\n      \"name\": \"#6\",\r\n      \"description\": null,\r\n      \"context\": \"/document/normalized_images/*\",\r\n      \"defaultLanguageCode\": \"en\",\r\n      \"visualFeatures\": [\r\n        \"tags\",\r\n        \"description\"\r\n      ],\r\n      \"details\": [],\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"image\",\r\n          \"source\": \"/document/normalized_images/*\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"tags\",\r\n          \"targetName\": \"imageTags\"\r\n        },\r\n        {\r\n          \"name\": \"description\",\r\n          \"targetName\": \"imageCaption\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/skillsets/{{index_name}}-skillset?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"skillsets",
+						"{{index_name}}-skillset"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 - Create Indexer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"dataSourceName\" : \"{{index_name}}-datasource\",\r\n  \"targetIndexName\" : \"{{index_name}}\",\r\n  \"skillsetName\" : \"{{index_name}}-skillset\",\r\n  \"fieldMappings\": [\r\n    {\r\n      \"sourceFieldName\": \"metadata_storage_path\",\r\n      \"targetFieldName\": \"metadata_storage_path\",\r\n      \"mappingFunction\": {\r\n        \"name\": \"base64Encode\",\r\n        \"parameters\": null\r\n      }\r\n    }\r\n  ],\r\n  \"outputFieldMappings\": [\r\n    {\r\n      \"sourceFieldName\": \"/document/merged_content/people\",\r\n      \"targetFieldName\": \"people\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/merged_content/organizations\",\r\n      \"targetFieldName\": \"organizations\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/merged_content/locations\",\r\n      \"targetFieldName\": \"locations\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/merged_content/keyphrases\",\r\n      \"targetFieldName\": \"keyphrases\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/language\",\r\n      \"targetFieldName\": \"language\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/merged_content\",\r\n      \"targetFieldName\": \"merged_content\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/normalized_images/*/text\",\r\n      \"targetFieldName\": \"text\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/normalized_images/*/layoutText\",\r\n      \"targetFieldName\": \"layoutText\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/normalized_images/*/imageTags/*/name\",\r\n      \"targetFieldName\": \"imageTags\"\r\n    },\r\n    {\r\n      \"sourceFieldName\": \"/document/normalized_images/*/imageCaption\",\r\n      \"targetFieldName\": \"imageCaption\"\r\n    }\r\n  ],\r\n  \"parameters\":\r\n  {\r\n\t\"batchSize\": 1,\r\n  \t\"maxFailedItems\":-1,\r\n  \t\"maxFailedItemsPerBatch\":-1,\r\n  \t\"configuration\": \r\n\t{\r\n    \t\"imageAction\": \"generateNormalizedImages\",\r\n    \t\"dataToExtract\": \"contentAndMetadata\",\r\n        \"parsingMode\": \"default\"\r\n\t}\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexers/{{index_name}}-indexer?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers",
+						"{{index_name}}-indexer"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 - Run Indexer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexers/{{index_name}}-indexer/run?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers",
+						"{{index_name}}-indexer",
+						"run"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 - Check Indexer Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexers/{{index_name}}-indexer/status?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers",
+						"{{index_name}}-indexer",
+						"status"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 - Search the Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexes/{{index_name}}/docs?search=*&api-version=2020-06-30&queryType=simple&searchMode=any&$count=true",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{index_name}}",
+						"docs"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "*"
+						},
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						},
+						{
+							"key": "queryType",
+							"value": "simple"
+						},
+						{
+							"key": "searchMode",
+							"value": "any"
+						},
+						{
+							"key": "$count",
+							"value": "true"
+						},
+						{
+							"key": "$select",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "searchFields",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "highlight",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "$top",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "$skip",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "$filter",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "facet",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 - Analyze",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text\":\"夏目漱石\",\r\n  \"analyzer\": \"ja.microsoft\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexes/{{index_name}}/analyze?api-version=2020-06-30",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{index_name}}",
+						"analyze"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 - Autocomplete",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexes/{{index_name}}/docs/autocomplete?search=&api-version=2020-06-30&autocompleteMode=oneTerm&fuzzy=false&$top=5&suggesterName=sg1",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{index_name}}",
+						"docs",
+						"autocomplete"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						},
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						},
+						{
+							"key": "autocompleteMode",
+							"value": "oneTerm"
+						},
+						{
+							"key": "fuzzy",
+							"value": "false"
+						},
+						{
+							"key": "$top",
+							"value": "5"
+						},
+						{
+							"key": "suggesterName",
+							"value": "sg1"
+						},
+						{
+							"key": "searchFields",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 - Suggester",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{env_search_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{search_service}}.search.windows.net/indexes/{{index_name}}/docs/suggest?search=&api-version=2020-06-30&fuzzy=false&$top=5&suggesterName=sg1",
+					"protocol": "https",
+					"host": [
+						"{{search_service}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{index_name}}",
+						"docs",
+						"suggest"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						},
+						{
+							"key": "api-version",
+							"value": "2020-06-30"
+						},
+						{
+							"key": "fuzzy",
+							"value": "false"
+						},
+						{
+							"key": "$top",
+							"value": "5"
+						},
+						{
+							"key": "suggesterName",
+							"value": "sg1"
+						},
+						{
+							"key": "$select",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "searchFields",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
