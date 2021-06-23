@@ -59,7 +59,7 @@ Postman が起動したら、画面上部の「Import」ボタンをクリック
 今回はコレクションと環境変数を私の [Github](https://github.com/nohanaga/AzureCognitiveSearchUsingPostman) 上に用意してありますので、以下の URL を入力して「Import」ボタンをクリックします。
 
 ```http
-https://raw.githubusercontent.com/nohanaga/AzureCognitiveSearchUsingPostman/main/Cognitive%20Search%20Pipeline%20APIs%202021.postman_collection.json
+https://raw.githubusercontent.com/nohanaga/Azure-Cognitive-Search-Workshop/main/postman/Cognitive%20Search%20Pipeline%20APIs%202021.postman_collection.json
 ```
 
 <img src="./media/postman/004.png" />
@@ -83,7 +83,7 @@ https://raw.githubusercontent.com/nohanaga/AzureCognitiveSearchUsingPostman/main
 もう一度インポート画面を開き、今度は環境変数ファイルをインポートします。
 
 ```http
-https://raw.githubusercontent.com/nohanaga/AzureCognitiveSearchUsingPostman/main/Cognitive%20Search%20Env%202021.postman_environment.json
+https://raw.githubusercontent.com/nohanaga/Azure-Cognitive-Search-Workshop/main/postman/Cognitive%20Search%20Env%202021.postman_environment.json
 ```
 
 <img src="./media/postman/005.png" />
@@ -91,7 +91,7 @@ https://raw.githubusercontent.com/nohanaga/AzureCognitiveSearchUsingPostman/main
 インポートが成功すると、API のリクエスト内で使用する変数のリストが表示されます。
 
  - `search_service`： Azure Cognitive Search サービスリソースの名前。インデックス作成対象のサービス名前を設定します。
- - `index_name`： 検索インデックスの名前。デフォルトで値が入っていますが自由に設定できます。
+ - `index_name`： 検索インデックスの名前。デフォルトで値が入っていますが自由に設定できます。前回 Azure Portal から作成したインデックス名とは違う名前を指定してください。
  - `env_search_api_key`： Azure Cognitive Search サービスの API キー。API キーには管理者用と検索用の [2 種類](https://docs.microsoft.com/ja-jp/rest/api/searchservice/#key-authentication)ありますが今回は管理者キーをセットしています。検索クエリ用途のみの場合は、クエリキーのほうを使用します。
  - `env_storage_connection_string`： Blob ストレージアカウントの接続文字列。これは Azure Portal からコピーします。
  - `env_storage_container`： ドキュメントが含まれている Blob コンテナーの名前
