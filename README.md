@@ -12,7 +12,7 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 ## [サンプルドキュメント](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/sample)
 このフォルダーには、さまざまなファイル形式の小さなデータセットが含まれており、フルテキスト検索ハンズオンに使用します。
 
-## [Simple Cognitive Search Tester](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/raw/89092a48ec9017db84210d3c485b4744d185843b/gui/simple-cognitive-search-tester.zip)
+## [Simple Cognitive Search Tester](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/gui)
 Simple Cognitive Search Tester は、今回のハンズオン用に用意したクエリテスト用の HTML ベース GUI です。
 
 免責事項: 本 HTML GUI(Simple Cognitive Search Tester) はハンズオン目的のみ使用できます。作成者は利用者に対して、いかなる種類の（明示的または黙示的な）保証もせず、責任、義務を一切負いません。
