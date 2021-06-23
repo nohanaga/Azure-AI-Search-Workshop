@@ -1,6 +1,6 @@
 # Azure-Cognitive-Search-Workshop
 
-Azure Cognitive Search Workshop は、ノーコードでナレッジマイニングを存分に体験することができるハンズオンコンテンツです。本コンテンツは Azure Cognitive Search の検索機能を理解することにフォーカスを当てているため、インフラや周辺サービスを学びたい方については[ナレッジマイニングソリューションアクセラレーター](https://github.com/nohanaga/azure-search-knowledge-mining)を受講してください。
+Azure Cognitive Search Workshop は、ノーコードでナレッジマイニングを存分に体験することができるハンズオンコンテンツです。本コンテンツは Azure Cognitive Search の検索機能を重点的に理解することにフォーカスを当てているため、インフラや周辺サービスを学びたい方については[ナレッジマイニングソリューションアクセラレーター](https://github.com/nohanaga/azure-search-knowledge-mining)を受講してください。
 
 ## コンテンツ
 
@@ -8,6 +8,8 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 1. [Postman を使って REST API 開発](UsingPostman.md)
 1. [フルテキスト検索](FullTextSearch.md)
 1. [豊富な検索機能を使いこなす](AdvancedSearch.md)
+1. [デバッグセッションを使ってカスタムスキルを追加する](AddCustomSkill.md)
+
 
 ## [サンプルドキュメント](/sample)
 このフォルダーには、さまざまなファイル形式の小さなデータセットが含まれており、フルテキスト検索ハンズオンに使用します。

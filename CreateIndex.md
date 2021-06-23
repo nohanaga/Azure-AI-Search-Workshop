@@ -257,6 +257,8 @@ Azure Cognitive Search の機能は基本的に REST API での提供となり�
 
 ※注意：HTML ファイル内に接続情報を含んでいるため、このファイルをそのまま運用環境に用いることはできません。
 
+ただしこのデモアプリ、完成度があまり高くなく、機能も限られるため本ハンズオンでは、[Simple Cognitive Search Tester](/gui) を利用します。
+
 # まとめ
 以上で、Azure Portal 上で Azure Cognitive Search のインデックス作成から検索までの流れを体験いただきました。
 この次は、[Postman を使った REST API 経由での作成方法](UsingPostman.md)についてご紹介したいと思います。
