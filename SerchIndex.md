@@ -4,10 +4,12 @@
 # 目次
 1. [Azure Cognitive Search とは](#Azure-Cognitive-Search-とは)
 
-# 検索クエリーハンズオン
+# フルテキスト検索
 Azure Cognitive Search には、フリーテキスト検索から高度に指定されたクエリ パターンまで、さまざまなシナリオをサポートする豊富なクエリ言語が用意されています。このハンズオンでは、クエリ要求と、作成できるクエリの種類について説明します。
 
 検索クエリの発行は、REST API で行います。検索クエリの送信には前回導入した Postman を使ってもよいですし、今回のハンズオン用に私が作成したクエリテスター GUI を利用することもできます。
+
+本ハンズオンでは、Simple Cognitive Search Tester を使用します。
 
 # 事前準備
 
@@ -28,8 +30,36 @@ simple-cognitive-search-tester ディレクトリ内に移動し、**settings.ht
 
 **注意**：localStorage に API キーを保管するのはセキュリティ上問題があります。今回一時的な使用のためだけに用意しています。必ずデモ終了後、Delete ボタンを押して削除してください。localStorage に API キーを保管したくない方は、各検索 html ページのソースコードの接続情報変数を直接編集してください。
 
+接続情報が正しければ、インデックスを検索することができます。サイドメニューから、「Simple Search」をクリックして、検索ワードを入れて Enter キーを押してみてください。
+
+<img src="./media/search/003.jpg" />
+
 
 # 1.フルテキスト検索
+## Simple クエリ パーサー (フルテキスト検索に最適) 
+Azure Cognitive Search には、2 種類のクエリ パーサーが用意されており、それぞれで実現可能な検索機能が異なります。設定できるのは、デフォルトの **Simple クエリ パーサー** (フルテキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索、フィールド検索、用語ブーストなど高度なクエリ構成で使用される **Full Lucene クエリ パーサー**です。
 
-## 1.1.単純なクエリ パーサー (フルテキスト検索に最適) 
-queryType にはパーサーを設定します。設定できるのは、既定の単純なクエリ パーサー (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される 完全な Lucene クエリ パーサーです。
+Simple Cognitive Search Tester では、「Simple Search」にデフォルトで Simple クエリ パーサーをセットしてあります。Full Lucene クエリ パーサーを使用したい場合は、「Detailed Search」の方を開いて **queryType** に **full** をセットします。
+
+### ブール式の利用
+Simple クエリ パーサーでは、AND、OR、NOT の論理式をサポートするために、文字 (+, -, |) の形式のブール演算子をサポートしています。
+
+たとえば、
+
+```
+機械 学習
+```
+
+を検索するとします。「Detailed Search」を開いて、検索ボックスに上記ワードを入力します。Detailed Search ではデフォルトで、Simple クエリ パーサーがセットされています。
+
+<img src="./media/search/008.jpg" />
+
+Postman などの REST API でクエリを発行したい方は、以下のクエリを投げてください。
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?[query parameters] 
+    {  
+      "search": "機械 学習",
+      "api-version": "2020-06-30"
+    }
+```
