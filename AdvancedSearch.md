@@ -78,7 +78,7 @@ metadata_storage_last_modified gt 2021-06-23T00:00:00Z
 
 [Azure Cognitive Search での OData $filter 構文](https://docs.microsoft.com/ja-jp/azure/search/search-query-odata-filter)
 
-## コレクション型のフィルタ
+## コレクション型のフィルター
 Collection(Edm.String) タイプのフィールドの中から、一致する値を検索したい場合は以下の構文を使用します。
 ```
 imageTags/any(t: t eq 'person')
@@ -93,7 +93,7 @@ imageTags フィールドに person を含むドキュメントを検索しま�
 
 <img src="./media/search/011.jpg" />
 
-ファセットは検索結果に応じて動的に生成されます。
+ファセットは検索結果に応じて動的に生成されます。実プロダクトでは、右のファセットの値をクリックもしくはチェックしたら、その値をフィルター条件に加えて再検索するなどの対話的 UI を設計します。
 
 facet パラメータに以下のように指定します。
 
@@ -101,7 +101,7 @@ facet パラメータに以下のように指定します。
 "keyphrases,count:5", "organizations,count:5", "locations,count:5"
 ```
 
-上記はファセットとして、keyphrases、organizations、locations フィールドから生成し、それぞれ上位 5 位を出力します。"count" の他に有効な値は、"sort"、"values"、"interval"、および "timeoffset" です。
+上記はファセットとして、keyphrases、organizations、locations フィールドから生成し、それぞれ上位 5 位を出力します。指定できるのはファセット可能にマークしたフィールドである必要があります。"count" の他に有効な値は、"sort"、"values"、"interval"、および "timeoffset" です。
 
 ```
 "metadata_storage_size,interval:10000"

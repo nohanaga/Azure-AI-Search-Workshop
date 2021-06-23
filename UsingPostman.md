@@ -1,7 +1,7 @@
 # はじめに
 組織内に貯まっている大量な構造化・非構造化データから、新たな価値を見出すためのフルマネージド全文検索サービスである [Azure Cognitive Search](https://www.youtube.com/watch?v=jOzA48ZDyC4) を使えば、誰でも簡単に AI 搭載検索エンジンを開発することができます。今回は Postman というツールを使って **REST API 経由**でインデックス開発を行うための方法をハンズオン形式で紹介します。
 
-本ハンズオンを使うと [Azure Cognitive Search を使って簡単ナレッジマイニングハンズオン（日本語対応）](CreateIndex.md)と全く同じ検索インデックスを**効率的**に構築できます。
+本ハンズオンを使うと [1,インデックスの作成](CreateIndex.md)と全く同じ検索インデックスを**効率的**に構築できます。
 
 # 目次
 1. [REST API 開発のすすめ](#rest-api-開発のすすめ)
@@ -34,8 +34,7 @@ REST API での開発を行うと、Azure Cognitive Search のすべての機能
 
 # 前提条件
 
- - [Azure Portal](https://ms.portal.azure.com/) などから検索サービスをデプロイ済みであること
- - ドキュメントを保管するストレージアカウントを作成済であること
+ - 有効な Azure サブスクリプションを持っていること
 
 # Postman のインストール
 REST API 開発がめちゃめちゃ捗ると人気の Postman をダウンロードしましょう。
