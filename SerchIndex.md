@@ -12,9 +12,21 @@ Azure Cognitive Search には、フリーテキスト検索から高度に指定
 # 事前準備
 
 ## Simple Cognitive Search Tester のダウンロード
-Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。
+Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。[こちら](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/raw/89092a48ec9017db84210d3c485b4744d185843b/gui/simple-cognitive-search-tester.zip)からダウンロードできます。ダウンロードしたら、**simple-cognitive-search-tester.zip** ファイルを任意のフォルダに解凍してください。
 
+## 接続情報の設定
 
+simple-cognitive-search-tester ディレクトリ内に移動し、**settings.html** をブラウザで開きます。
+
+<img src="./media/search/002.jpg" />
+
+検索クエリの実行に必要な、以下の情報を入力して「Save」をクリックします。入力した接続情報は、ブラウザの [localStorage](https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage) に保存されます。
+
+* `search_service`: Azure Cognitive Search サービスリソースの名前。検索対象の検索サービス名を設定します。
+* `index_name`: 検索インデックスの名前。検索対象のインデックス名を指定します。
+* `querykey`: Azure Cognitive Search サービスの API キー。検索クエリ用途のみですので、クエリキーのほうを使用します。これは Azure Portal の検索サービスの「設定メニュ→キー」からコピーします。
+
+**注意**：localStorage に API キーを保管するのはセキュリティ上問題があります。今回一時的な使用のためだけに用意しています。必ずデモ終了後、Delete ボタンを押して削除してください。localStorage に API キーを保管したくない方は、各検索 html ページのソースコードの接続情報変数を直接編集してください。
 
 
 # 1.フルテキスト検索
