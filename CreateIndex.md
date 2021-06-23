@@ -17,12 +17,11 @@
 
 
 # 検索サービスの作成
-[Azure Portal](https://portal.azure.com/) にログインし、新規でリソースグループを作成します。
-作成したリソースグループの中に、検索サービスを追加します。マーケットプレイスで、「Azure Cognitive Search」と検索してください。
+[Azure Portal](https://portal.azure.com/) にログインし、「リソースの作成」をクリックします。マーケットプレイスで、「Azure Cognitive Search」と検索し、以下のサービスを見つけて「作成」をクリックしてください。
 
 <img src="./media/001a.jpg" width=450 />
 
-新しい検索サービスウィザードで、必要事項を入力します。価格レベルでは、必要なプランを選択します。こちらの[料金表](https://azure.microsoft.com/pricing/details/search/)も参考にしてください。無料プランで始めることもできます。
+新しい検索サービスウィザードで、必要事項を入力します。リソースグループを新たに作成する場合、**新規作成** をクリックし、新しく作成したいリソースグループ名を記入します。価格レベルでは、必要なプランを選択します。こちらの[料金表](https://azure.microsoft.com/pricing/details/search/)も参考にしてください。無料プランで始めることもできます。
 
 <img src="./media/001.jpg" />
 
@@ -91,12 +90,15 @@
 
 <img src="./media/012.jpg" />
 
-対象インデックスのカスタマイズウィザードでは、検索インデックスとして格納するフィールドごとに、取得可能、フィルター可能、ソート可能、ファセット可能、検索可能、アナライザー、サジェスターという一般的な検索インデックスとしての設定を行う必要があります。各機能の説明は冒頭の動画でするとして、今回は上図のようにチェックしてください。
+対象インデックスのカスタマイズウィザードでは、検索インデックスとして格納するフィールドごとに、取得可能、フィルター可能、ソート可能、ファセット可能、検索可能、アナライザー、サジェスターという一般的な検索インデックスとしての設定を行う必要があります。各機能の説明は冒頭の動画でするとして、**今回は上図のようにチェックしてください**。
 
-アナライザーにはデフォルトで、標準 Lucene アナライザーがセットされていますが、これは西洋語用のもので日本語の解析に対応していませんので、日本語の解析が必要なフィールドには、**日本語アナライザー**を設定する必要があります。日本語のアナライザーには Lucene アナライザーと、Microsoft アナライザーの [2 種類](https://docs.microsoft.com/azure/search/index-add-language-analyzers#comparing-lucene-and-microsoft-analyzers)が用意されていますが、それぞれトークナイズの手法に違いがあるので、要件によって選択するようにしてください。
+アナライザーにはデフォルトで、標準 Lucene アナライザーがセットされていますが、これは西洋語用のもので日本語の解析に対応していませんので、日本語の解析が必要なフィールドには、**日本語アナライザー**を設定する必要があります。日本語のアナライザーには Lucene アナライザーと、Microsoft アナライザーの [2 種類](https://docs.microsoft.com/azure/search/index-add-language-analyzers#comparing-lucene-and-microsoft-analyzers)が用意されていますが、それぞれトークナイズの手法に違いがあるので、要件によって選択するようにしてください。今回は**日本語 Microsoft アナライザー**を使用します。
 
  * `content`: ドキュメントの本文が格納されます。文字解析可能なドキュメントはここに値が格納されます。中身は日本語として解析される必要があるため、[日本語 Microsoft アナライザー](https://docs.microsoft.com/azure/search/index-add-language-analyzers)をセットします。
- * `metadata_storage_name`: ドキュメントのファイル名です。今回は検索結果に表示するために、取得可能にチェックします。
+  * `metadata_storage_size`: BLOB のサイズ (バイト単位)です。ファイルサイズでフィルター、ソート、ファセットを可能にするために、取得可能、フィルター可能、ソート可能、ファセット可能にチェックします。
+  * `metadata_storage_last_modified`: 前回変更時の BLOB のタイムスタンプです。タイムスタンプでフィルター、ソート、ファセットを可能にするために、取得可能、フィルター可能、ソート可能、ファセット可能にチェックします。
+ * `metadata_storage_name`: BLOB のファイル名です。今回は検索結果に表示するために、取得可能にチェックします。
+  * `metadata_storage_file_extension`: BLOB の拡張子です。拡張子でフィルター、ソート、ファセットを可能にするために、取得可能、フィルター可能、ソート可能、ファセット可能にチェックします。
  * `people`: [人物エンティティ](https://docs.microsoft.com/azure/search/cognitive-search-skill-entity-recognition)が格納されます。日本語で解析できるようにします。
  * `organizations`: [組織エンティティ](https://docs.microsoft.com/azure/search/cognitive-search-skill-entity-recognition)が格納されます。日本語で解析できるようにします。
  * `locations`: [位置エンティティ](https://docs.microsoft.com/azure/search/cognitive-search-skill-entity-recognition)が格納されます。日本語で解析できるようにします。
@@ -108,7 +110,7 @@
  * `imageTags`: [画像解析](https://docs.microsoft.com/azure/search/cognitive-search-skill-image-analysis)して画像のコンテンツに関係する単語の一覧が格納されます。今回は設定省略します。（日本語にも対応しています）
  * `imageCaption`: [画像解析](https://docs.microsoft.com/azure/search/cognitive-search-skill-image-analysis)して画像のコンテンツを説明するための文が格納されます。今回は設定省略します。（日本語にも対応しています）
 
- フィールドごとに一つ一つ設定していくのが面倒くさいと思った方はご安心ください。これらの設定はすべて JSON 形式でエクスポートできますので、JSON 形式で編集などをして、[Postman](https://www.postman.com/) を使って REST API 経由でインデックスに登録することができます。こちらは別記事にて紹介いたします。
+ フィールドごとに一つ一つ設定していくのが面倒くさいと思った方はご安心ください。これらの設定はすべて JSON 形式でエクスポートできますので、JSON 形式で編集などをして、[Postman](https://www.postman.com/) を使って REST API 経由でインデックスに登録することができます。今回はインデックスフィールドについて学んでいただくため、一つずつ手動でチェックしていただきます。
 
 設定が完了しましたら、「次：インデクサーの作成」をクリックしてください。
 
@@ -135,6 +137,18 @@
 
 <br>
 
+# インデックスの CORS 設定
+
+ブラウザーではすべてのクロスオリジン要求が禁止されるので、既定ではクライアント側 JavaScript で API を呼び出すことはできません。 インデックスに対するクロスオリジン クエリを許可するには、corsOptions 属性を設定することによって、CORS (クロスオリジン リソース共有) を有効にします。
+
+<img src="./media/015.jpg" />
+
+「インデックス」タブをクリックし、インデックス名を選択します。
+
+<img src="./media/014a.jpg" />
+
+インデックス内の「CORS」タブから、「許可されたオリジンの種類」を **すべて** に設定して、「保存」をクリックします。
+
 # インデックスの検索
 
 作成したインデックスの中身は、ポータル上で検索することができます。
@@ -152,6 +166,8 @@
 
 # スキルセットの修正
 
+## OCR スキルの言語設定
+
 OCR スキルはデフォルトで英語の設定になっているため、そのまま検索しようとするとうまく検索できません。OCR を日本語に対応させる場合は一度ポータルに戻り、「スキルセット」タブをクリックし、スキルセット名を選択してください。
 
 <img src="./media/016.jpg" />
@@ -167,6 +183,39 @@ OCR スキルはデフォルトで英語の設定になっているため、そ�
       "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
        ...
       "defaultLanguageCode": "ja",
+       ...
+    }
+```
+
+## キーフレーズ抽出スキルの上限設定
+
+ドキュメントから抽出するキーフレーズの最大数を 20　に制限します。
+
+<img src="./media/017a.jpg" />
+
+以下のように、`#Microsoft.Skills.Text.KeyPhraseExtractionSkill` の部分の、`maxKeyPhraseCount` を `20` に変更し、「保存」ボタンをクリックします。
+
+```json
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+       ...
+      "maxKeyPhraseCount": 20,
+       ...
+    }
+```
+
+## エンティティ認識スキルの信頼度スコア閾値設定
+ドキュメントから抽出するエンティティの信頼度スコアの閾値を 0.8 に制限します。信頼度スコア 0.8 よりも小さいエンティティは返却されません。
+
+<img src="./media/017b.jpg" />
+
+以下のように、`#Microsoft.Skills.Text.EntityRecognitionSkill` の部分の、`minimumPrecision` を `0.8` に変更し、「保存」ボタンをクリックします。
+
+```json
+    {
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+       ...
+      "minimumPrecision": 0.8,
        ...
     }
 ```
@@ -203,3 +252,7 @@ Azure Cognitive Search の機能は基本的に REST API での提供となり�
 ローカルでダウンロードした HTML ファイルをブラウザで開き、上部の検索ボックスにキーワードを入れると、このように検索結果が表示されます。簡易的ですが、検索デモとして使うことができます。左ペインは、検索結果に応じて動的に生成される[ファセットフィルター](https://docs.microsoft.com/azure/search/search-filters-facets)です。検索ボックスに何か単語を入力すると、[サジェスト機能](https://docs.microsoft.com/azure/search/search-add-autocomplete-suggestions#suggestions)によるドロップダウンが表示されます。
 
 ※注意：HTML ファイル内に接続情報を含んでいるため、このファイルをそのまま運用環境に用いることはできません。
+
+# まとめ
+以上で、Azure Portal 上で Azure Cognitive Search のインデックス作成から検索までの流れを体験いただきました。
+この次は、[Postman を使った REST API 経由での作成方法](https://qiita.com/nohanaga/items/633b4f3d4ac77154d286)についてご紹介したいと思います。
