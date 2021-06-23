@@ -8,6 +8,8 @@
 1. [ソート($orderby)](#ソートorderby)
 1. [フィルター($filter)](#フィルターfilter)
 1. [ファセット(facet)](#ファセットfacet)
+1. [オートコンプリート](#オートコンプリート)  
+1. [サジェスト](#サジェスト)  
 1. [まとめ](#まとめ)  
 
 
@@ -110,13 +112,30 @@ facet パラメータに以下のように指定します。
 
 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](https://docs.microsoft.com/ja-jp/azure/search/search-faceted-navigation)
 
+# オートコンプリート
+検索インデックス内の既存の用語を使用して、部分的に型指定されたクエリ入力を完了します。たとえば、クエリ入力が "medic" の場合、オートコンプリート API は "medicare"、"medicaid"、"medicine" を返します (これらの用語がインデックスに含まれている場合)。内部的には、検索エンジンは、 Suggester が構成されているフィールド内の一致する用語を検索します。
 
+Simple Cognitive Search Tester にはオートコンプリートを実際に試すことができる機能があります。サイドメニューから、「Autocomplete」をクリックしてください。
 
+Postman を利用している方は、API 一覧の「09 - Autocomplete」を利用してください。
 
+<img src="./media/search/006.jpg" />
 
+検索ボックスに一文字入力するたびに jQuery UI Autocomplete が Autocomplete API と連携して文字列の候補ドロップダウンを表示します。
 
+[オートコンプリート (Azure Cognitive Search REST API)](https://docs.microsoft.com/ja-jp/rest/api/searchservice/autocomplete)
 
+# サジェスト
+サジェスト対応フィールドで一致する値を検索し、一致を含む**ドキュメント**を返す、入力としての検索クエリです。たとえば、 city フィールドで候補を有効にした場合、「sea」と入力すると、そのフィールドの "Seattle"、"sea vs-tac"、および "seaside" (すべての実際の市区町村名) を含むドキュメントが生成されます。
+
+Simple Cognitive Search Tester にはサジェストを実際に試すことができる機能があります。サイドメニューから、「Suggest」をクリックしてください。
+
+Postman を利用している方は、API 一覧の「10 - Suggester」を利用してください。
+
+<img src="./media/search/007.jpg" />
+
+[サジェスト (Azure Cognitive Search REST API)](https://docs.microsoft.com/ja-jp/rest/api/searchservice/suggestions)
 
 
 # まとめ
-本ハンズオンでは、Simple クエリパーサーと Full Lucene クエリ パーサーの違いを理解していただき、それぞれで可能な検索方法について実践しました。次回は応用的な検索方法として、フィルターやファセット、並び替えなどを解説します。
+本ハンズオンでは、Azure Cognitive Search の豊富な検索機能を使いこなせるようになりました。細かい機能をすべてカバーしたわけではありませんので、各機能の Docs を参照してさらに深堀して体験していただければと思います。
