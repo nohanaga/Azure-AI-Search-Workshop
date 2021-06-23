@@ -51,7 +51,7 @@
 作成したコンテナーの中に入り、検索したいファイルをアップロードします。画像や PDF、ワード、エクセルファイルなどをこちらにアップロードしてください。ファイルが大量にある場合は、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使ってアップロードすることもできます。
 サポートしているファイルフォーマットの一覧は[こちら](https://docs.microsoft.com/azure/search/search-blob-storage-integration#supported-content-types)を参照してください。
 
-今回のワークショップ用に [Github](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/pdf) に検索用の PDF ファイルを用意してありますので、ローカルにダウンロードして、Blob Storage にアップロードします。
+今回のワークショップ用に [Github](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/sample) に検索用の PDF ファイルを用意してありますので、ローカルにダウンロードして、Blob Storage にアップロードします。
 
 <BR>
 
