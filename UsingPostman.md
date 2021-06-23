@@ -39,7 +39,7 @@ REST API での開発を行うと、Azure Cognitive Search のすべての機能
 
 # Postman のインストール
 REST API 開発がめちゃめちゃ捗ると人気の Postman をダウンロードしましょう。
-まだインストールしていない場合は、[https://www.postman.com/downloads/](https://www.postman.com/downloads/)　にアクセスします。Windows, Mac, Linux, Web に対応しています。対象オペレーティングシステムの Postman をダウンロードしてインストールします。本記事では、Windows 版 Postman v8.3.1 を用いて解説しますが、バージョンや環境によって画面デザイン等が若干異なる場合がございます。
+まだインストールしていない場合は、[https://www.postman.com/downloads/](https://www.postman.com/downloads/)　にアクセスします。Windows, Mac, Linux, Web に対応しています。対象オペレーティングシステムの Postman をダウンロードしてインストールします。本ハンズオンでは、Windows 版 Postman v8.3.1 を用いて解説しますが、バージョンや環境によって画面デザイン等が若干異なる場合がございます。
 
 <img src="./media/postman/001.png" />
 
@@ -90,10 +90,10 @@ https://raw.githubusercontent.com/nohanaga/Azure-Cognitive-Search-Workshop/main/
 
 インポートが成功すると、API のリクエスト内で使用する変数のリストが表示されます。
 
- - `search_service`： Azure Cognitive Search サービスリソースの名前。インデックス作成対象のサービス名前を設定します。
+ - `search_service`： Azure Cognitive Search サービスリソースの名前。インデックス作成対象の検索サービス名を設定します。
  - `index_name`： 検索インデックスの名前。デフォルトで値が入っていますが自由に設定できます。前回 Azure Portal から作成したインデックス名とは違う名前を指定してください。
- - `env_search_api_key`： Azure Cognitive Search サービスの API キー。API キーには管理者用と検索用の [2 種類](https://docs.microsoft.com/ja-jp/rest/api/searchservice/#key-authentication)ありますが今回は管理者キーをセットしています。検索クエリ用途のみの場合は、クエリキーのほうを使用します。
- - `env_storage_connection_string`： Blob ストレージアカウントの接続文字列。これは Azure Portal からコピーします。
+ - `env_search_api_key`： Azure Cognitive Search サービスの API キー。API キーには管理者用と検索用の [2 種類](https://docs.microsoft.com/ja-jp/rest/api/searchservice/#key-authentication)ありますが今回は管理者キーをセットしています。検索クエリ用途のみの場合は、クエリキーのほうを使用します。これは Azure Portal の検索サービスの「設定メニュ→キー」からコピーします。
+ - `env_storage_connection_string`： Blob ストレージアカウントの接続文字列。これは Azure Portal のストレージアカウントの「セキュリティとネットワークメニュー→アクセスキー」からコピーします。
  - `env_storage_container`： ドキュメントが含まれている Blob コンテナーの名前
  - `cog_services_key`： Cognitive Services のキー。これは Azure Portal からコピーします。今回のハンズオンでは使用しません。
 
@@ -108,7 +108,7 @@ https://raw.githubusercontent.com/nohanaga/Azure-Cognitive-Search-Workshop/main/
 
 ## 1. データソースの作成
 
-まず最初にドキュメントを保管しているストレージへの接続を定義するデータソースを作成します。本記事のコレクションは、Azure Blob ストレージがプライマリデータソースであることを前提としています。
+まず最初にドキュメントを保管しているストレージへの接続を定義するデータソースを作成します。本ハンズオンのコレクションは、Azure Blob ストレージがプライマリデータソースであることを前提としています。
 
 Postman の使い方の紹介も含めて、詳しく説明していきます。
 
