@@ -116,7 +116,7 @@ Azure Blob Storage からファイルの URL をコピーするには、以下�
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fnohanaga%2Fazure-search-japanese-ocr-tips%2Fmaster%2Fazuredeploy.json">![deploytoazure.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/674344/dfd2af67-6d1f-2d8b-02de-5067b415a1d3.png)
 </a>
 
-デプロイボタンをクリックした後、以下の設定画面で、今回検索サービスの作成を行ったリソースグループを選択して、「確認と作成」をクリックします。
+デプロイボタンをクリックした後、以下の設定画面で、今回検索サービスの作成を行ったリソースグループを選択して、「確認と作成」ボタンをクリックします。
 
 <img src="./media/customskill/015.jpg" />
 
@@ -124,7 +124,7 @@ Azure Blob Storage からファイルの URL をコピーするには、以下�
 
 <img src="./media/customskill/016.jpg" />
 
-関数の画面の「関数の URL の取得」ボタンをクリックし、クリックボードにコピーボタンをクリックします。
+関数の画面の「関数の URL の取得」ボタンをクリックし、「クリックボードにコピー」ボタンをクリックします。
 
 <img src="./media/customskill/017.jpg" />
 
