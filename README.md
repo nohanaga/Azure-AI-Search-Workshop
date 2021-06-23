@@ -9,7 +9,7 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 1. [フルテキスト検索](FullTextSearch.md)
 1. [豊富な検索機能を使いこなす](AdvancedSearch.md)
 
-## [サンプルドキュメント](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/sample)
+## [サンプルドキュメント](/sample)
 このフォルダーには、さまざまなファイル形式の小さなデータセットが含まれており、フルテキスト検索ハンズオンに使用します。
 
 ## [Simple Cognitive Search Tester](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/gui)
