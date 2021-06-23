@@ -12,12 +12,12 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 ## [サンプルドキュメント](/sample)
 このフォルダーには、さまざまなファイル形式の小さなデータセットが含まれており、フルテキスト検索ハンズオンに使用します。
 
-## [Simple Cognitive Search Tester](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/gui)
+## [Simple Cognitive Search Tester](/gui)
 Simple Cognitive Search Tester は、今回のハンズオン用に用意したクエリテスト用の HTML ベース GUI です。
 
 免責事項: 本 HTML GUI(Simple Cognitive Search Tester) はハンズオン目的のみ使用できます。作成者は利用者に対して、いかなる種類の（明示的または黙示的な）保証もせず、責任、義務を一切負いません。
 
-## [Postman API コレクション](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/postman)
+## [Postman API コレクション](/postman)
 プログラムで検索インデックスを作成するために使用できる [Postman](https://www.postman.com/) コレクションと環境変数セットが含まれています。このコレクションは、Azure Cognitive Search 機能の大部分を利用できるように事前構成されています。
 
 ## License
