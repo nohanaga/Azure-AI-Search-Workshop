@@ -8,7 +8,7 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 1. [Postman を使って REST API 開発](UsingPostman.md)
 1. [フルテキスト検索](FullTextSearch.md)
 1. [豊富な検索機能を使いこなす](AdvancedSearch.md)
-1. [デバッグセッションを使ってカスタムスキルを追加する](AddCustomSkill.md)
+1. [デバッグセッションを使ってカスタムスキルを追加する](AddCustomSkill.md) (オプション)
 
 
 ## [サンプルドキュメント](/sample)
