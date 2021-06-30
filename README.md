@@ -16,6 +16,7 @@ Azure Cognitive Search Workshop は、ノーコードでナレッジマイニン
 
 ## [Simple Cognitive Search Tester](/gui)
 Simple Cognitive Search Tester は、今回のハンズオン用に用意したクエリテスト用の HTML ベース GUI です。
+最新のソースコードは[こちら](https://github.com/nohanaga/Simple-Cognitive-Search-Tester)のリポジトリを参照してください。
 
 免責事項: 本 HTML GUI(Simple Cognitive Search Tester) はハンズオン目的のみ使用できます。作成者は利用者に対して、いかなる種類の（明示的または黙示的な）保証もせず、責任、義務を一切負いません。
 
