@@ -48,7 +48,7 @@ simple-cognitive-search-tester ディレクトリ内に移動し、**settings.ht
 
 **注意**：localStorage に API キーを保管するのはセキュリティ上問題があります。今回一時的な使用のためだけに用意しています。必ずデモ終了後、Delete ボタンを押して削除してください。localStorage に API キーを保管したくない方は、各検索 html ページのソースコードの接続情報変数を直接編集してください。
 
-接続情報が正しければ、インデックスを検索することができます。サイドメニューから、「Simple Search」をクリックして、検索ワードを入れて Enter キーを押してみてください。
+接続情報が正しければ、インデックスを検索することができます。サイドメニューから、「Standard Search」をクリックして、検索ワードを入れて Enter キーを押してみてください。
 
 <img src="./media/search/003.jpg" />
 
@@ -57,7 +57,7 @@ simple-cognitive-search-tester ディレクトリ内に移動し、**settings.ht
 # Simple クエリ パーサー
 Azure Cognitive Search には、2 種類のクエリ パーサーが用意されており、それぞれで実現可能な検索機能が異なります。設定できるのは、デフォルトの **Simple クエリ パーサー** (フルテキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索、フィールド検索、用語ブーストなど高度なクエリ構成で使用される **Full Lucene クエリ パーサー**です。
 
-Simple Cognitive Search Tester では、「Simple Search」にデフォルトで Simple クエリ パーサーをセットしてあります。Full Lucene クエリ パーサーを使用したい場合は、「Detailed Search」の方を開いて **queryType** に **full** をセットします。
+Simple Cognitive Search Tester では、「Standard Search」にデフォルトで Simple クエリ パーサーをセットしてあります。Full Lucene クエリ パーサーを使用したい場合は、 **queryType** に **full** をセットします。
 
 ## ブール演算子
 Simple クエリ パーサーでは、AND、OR、NOT の論理式をサポートするために、文字 (+, -, |) の形式のブール演算子をサポートしています。
