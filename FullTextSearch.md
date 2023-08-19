@@ -68,7 +68,7 @@ Simple クエリ パーサーでは、AND、OR、NOT の論理式をサポート
 画像 認識
 ```
 
-を検索するとします。「Detailed Search」を開いて、検索ボックスに上記ワードを入力します。Detailed Search ではデフォルトで、Simple クエリ パーサーがセットされています。
+を検索するとします。「Standard Search」を開いて、検索ボックスに上記ワードを入力します。Standard Search ではデフォルトで、Simple クエリ パーサーがセットされています。
 
 <img src="./media/search/008.jpg" />
 
