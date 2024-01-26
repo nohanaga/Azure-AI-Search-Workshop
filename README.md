@@ -1,6 +1,6 @@
-# Azure-Cognitive-Search-Workshop
+# Azure-AI-Search-Workshop
 
-Azure Cognitive Search Workshop は、ノーコードでナレッジマイニングを存分に体験することができるハンズオンコンテンツです。本コンテンツは Azure Cognitive Search の検索機能を重点的に理解することにフォーカスを当てているため、インフラや周辺サービスを学びたい方については[ナレッジマイニングソリューションアクセラレーター](https://github.com/nohanaga/azure-search-knowledge-mining)を受講してください。
+Azure AI Search Workshop は、ノーコードでナレッジマイニングを存分に体験することができるハンズオンコンテンツです。本コンテンツは Azure AI Search の検索機能を重点的に理解することにフォーカスを当てているため、インフラや周辺サービスを学びたい方については[ナレッジマイニングソリューションアクセラレーター](https://github.com/nohanaga/azure-search-knowledge-mining)を受講してください。
 
 ## コンテンツ
 
@@ -21,7 +21,7 @@ Simple Cognitive Search Tester は、今回のハンズオン用に用意した�
 免責事項: 本 HTML GUI(Simple Cognitive Search Tester) はハンズオン目的のみ使用できます。作成者は利用者に対して、いかなる種類の（明示的または黙示的な）保証もせず、責任、義務を一切負いません。
 
 ## [Postman API コレクション](/postman)
-プログラムで検索インデックスを作成するために使用できる [Postman](https://www.postman.com/) コレクションと環境変数セットが含まれています。このコレクションは、Azure Cognitive Search 機能の大部分を利用できるように事前構成されています。
+プログラムで検索インデックスを作成するために使用できる [Postman](https://www.postman.com/) コレクションと環境変数セットが含まれています。このコレクションは、Azure AI Search 機能の大部分を利用できるように事前構成されています。
 
 ## License
 Please refer to [LICENSE](LICENSE) for all licensing information.

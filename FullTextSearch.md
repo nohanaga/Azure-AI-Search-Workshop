@@ -1,5 +1,5 @@
 # はじめに
-組織内に貯まっている大量な構造化・非構造化データから、新たな価値を見出すためのフルマネージド全文検索サービスである [Azure Cognitive Search](https://www.youtube.com/watch?v=jOzA48ZDyC4) を使えば、誰でも簡単に AI 搭載検索エンジンを開発することができます。今回は Azure Cognitive Search のフルテキスト検索機能をハンズオン形式でご紹介します。
+組織内に貯まっている大量な構造化・非構造化データから、新たな価値を見出すためのフルマネージド全文検索サービスである [Azure AI Search](https://www.youtube.com/watch?v=jOzA48ZDyC4) を使えば、誰でも簡単に AI 搭載検索エンジンを開発することができます。今回は Azure AI Search のフルテキスト検索機能をハンズオン形式でご紹介します。
 
 # 目次
 1. [フルテキスト検索](#フルテキスト検索)
@@ -17,9 +17,9 @@
     1. [用語ブースト](#用語ブースト)
 1. [まとめ](#まとめ)  
 
-
+f
 # フルテキスト検索
-Azure Cognitive Search には、フリーテキスト検索から高度に指定されたクエリ パターンまで、さまざまなシナリオをサポートする豊富なクエリ言語が用意されています。このハンズオンでは、クエリ要求と、作成できるクエリの種類について説明します。
+Azure AI Search には、フリーテキスト検索から高度に指定されたクエリ パターンまで、さまざまなシナリオをサポートする豊富なクエリ言語が用意されています。このハンズオンでは、クエリ要求と、作成できるクエリの種類について説明します。
 
 検索クエリの発行は、REST API で行います。検索クエリの送信には[前回](UsingPostman.md)導入した Postman を使ってもよいですし、今回のハンズオン用に用意したクエリテスター GUI を利用することもできます。
 
@@ -32,7 +32,7 @@ Azure Cognitive Search には、フリーテキスト検索から高度に指定
 # 事前準備
 
 ## Simple Cognitive Search Tester のダウンロード
-Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。極めてシンプルに作ってあるのでダウンロードして解凍するだけで、インストール作業は一切必要ありません。[こちら](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/raw/main/gui/simple-cognitive-search-tester.zip)からダウンロードできます。ダウンロードしたら、**simple-cognitive-search-tester.zip** ファイルを任意のフォルダに解凍してください。
+Simple Cognitive Search Tester は、今回のハンズオン用に私が用意したクエリテスト用の HTML ベース GUI です。極めてシンプルに作ってあるのでダウンロードして解凍するだけで、インストール作業は一切必要ありません。[こちら](https://github.com/nohanaga/Azure-AI-Search-Workshop/raw/main/gui/simple-cognitive-search-tester.zip)からダウンロードできます。ダウンロードしたら、**simple-cognitive-search-tester.zip** ファイルを任意のフォルダに解凍してください。
 
 ## 接続情報の設定
 
@@ -42,9 +42,9 @@ simple-cognitive-search-tester ディレクトリ内に移動し、**settings.ht
 
 検索クエリの実行に必要な、以下の情報を入力して「Save」をクリックします。入力した接続情報は、ブラウザの [localStorage](https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage) に保存されます。
 
-* `search_service`: Azure Cognitive Search サービスリソースの名前。検索対象の検索サービス名を設定します。
+* `search_service`: Azure AI Search サービスリソースの名前。検索対象の検索サービス名を設定します。
 * `index_name`: 検索インデックスの名前。検索対象のインデックス名を指定します。
-* `querykey`: Azure Cognitive Search サービスの API キー。検索クエリ用途のみですので、クエリキーのほうを使用します。これは Azure Portal の検索サービスの「設定メニュ→キー」からコピーします。
+* `querykey`: Azure AI Search サービスの API キー。検索クエリ用途のみですので、クエリキーのほうを使用します。これは Azure Portal の検索サービスの「設定メニュ→キー」からコピーします。
 
 **注意**：localStorage に API キーを保管するのはセキュリティ上問題があります。今回一時的な使用のためだけに用意しています。必ずデモ終了後、Delete ボタンを押して削除してください。localStorage に API キーを保管したくない方は、各検索 html ページのソースコードの接続情報変数を直接編集してください。
 
@@ -55,7 +55,7 @@ simple-cognitive-search-tester ディレクトリ内に移動し、**settings.ht
 
 # フルテキスト検索の実践
 # Simple クエリ パーサー
-Azure Cognitive Search には、2 種類のクエリ パーサーが用意されており、それぞれで実現可能な検索機能が異なります。設定できるのは、デフォルトの **Simple クエリ パーサー** (フルテキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索、フィールド検索、用語ブーストなど高度なクエリ構成で使用される **Full Lucene クエリ パーサー**です。
+Azure AI Search には、2 種類のクエリ パーサーが用意されており、それぞれで実現可能な検索機能が異なります。設定できるのは、デフォルトの **Simple クエリ パーサー** (フルテキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索、フィールド検索、用語ブーストなど高度なクエリ構成で使用される **Full Lucene クエリ パーサー**です。
 
 Simple Cognitive Search Tester では、「Standard Search」にデフォルトで Simple クエリ パーサーをセットしてあります。Full Lucene クエリ パーサーを使用したい場合は、 **queryType** に **full** をセットします。
 
@@ -130,7 +130,7 @@ Postman などの REST API でクエリを発行したい方は、以下のパ�
 
 searchMode を **any** と **all** で切り替えながら結果がどう変わるかを試してみてください。
 
-Simple クエリ パーサーの詳しい構文解説は、[Azure Cognitive Search での単純なクエリ構文](https://docs.microsoft.com/ja-jp/azure/search/query-simple-syntax)を参照してください。
+Simple クエリ パーサーの詳しい構文解説は、[Azure AI Search での単純なクエリ構文](https://docs.microsoft.com/azure/search/query-simple-syntax)を参照してください。
 
 
 # Full Lucene クエリ パーサー
@@ -211,7 +211,7 @@ blue~
 
 "顔" が含まれるドキュメントの  @search.score がブーストされ、高い順位になります。
 
-Full Lucene クエリ パーサーの詳しい構文解説は、[Azure Cognitive Search での Lucence クエリ構文](https://docs.microsoft.com/ja-jp/azure/search/query-lucene-syntax)を参照してください。
+Full Lucene クエリ パーサーの詳しい構文解説は、[Azure AI Search での Lucence クエリ構文](https://docs.microsoft.com/azure/search/query-lucene-syntax)を参照してください。
 
 
 # まとめ

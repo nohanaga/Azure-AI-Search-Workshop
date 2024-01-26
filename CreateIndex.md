@@ -1,5 +1,5 @@
 # はじめに
-組織内に貯まっている大量な構造化・非構造化データから、新たな価値を見出すためのフルマネージド全文検索サービスである [Azure Cognitive Search](https://www.youtube.com/watch?v=jOzA48ZDyC4) を使えば、誰でも簡単に AI 搭載検索エンジンを開発することができます。今回はノーコード、画面上の操作だけで簡単に検索インデックスを作成する手順をハンズオン形式でご紹介します。
+組織内に貯まっている大量な構造化・非構造化データから、新たな価値を見出すためのフルマネージド全文検索サービスである [Azure AI Search](https://www.youtube.com/watch?v=jOzA48ZDyC4) を使えば、誰でも簡単に AI 搭載検索エンジンを開発することができます。今回はノーコード、画面上の操作だけで簡単に検索インデックスを作成する手順をハンズオン形式でご紹介します。
 
 # 目次
 1. [前提条件](#前提条件)
@@ -22,7 +22,7 @@
  - 有効な Azure サブスクリプションを持っていること
 
 # 検索サービスの作成
-[Azure Portal](https://portal.azure.com/) にログインし、「リソースの作成」をクリックします。マーケットプレイスで、「Azure Cognitive Search」と検索し、以下のサービスを見つけて「作成」をクリックしてください。
+[Azure Portal](https://portal.azure.com/) にログインし、「リソースの作成」をクリックします。マーケットプレイスで、「Azure AI Search」と検索し、以下のサービスを見つけて「作成」をクリックしてください。
 
 <img src="./media/001a.jpg" width=450 />
 
@@ -56,7 +56,7 @@
 作成したコンテナーの中に入り、検索したいファイルをアップロードします。画像や PDF、ワード、エクセルファイルなどをこちらにアップロードしてください。ファイルが大量にある場合は、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使ってアップロードすることもできます。
 サポートしているファイルフォーマットの一覧は[こちら](https://docs.microsoft.com/azure/search/search-blob-storage-integration#supported-content-types)を参照してください。
 
-今回のワークショップ用に [Github](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop/tree/main/sample) に検索用の PDF, Word, 画像ファイルを 16 個用意してありますので、すべてローカルにダウンロードして、Blob Storage にアップロードします。
+今回のワークショップ用に [Github](https://github.com/nohanaga/Azure-AI-Search-Workshop/tree/main/sample) に検索用の PDF, Word, 画像ファイルを 16 個用意してありますので、すべてローカルにダウンロードして、Blob Storage にアップロードします。
 
 <BR>
 
@@ -74,7 +74,7 @@
 
 データのインポートウィザードでは、データソースに「Azure BLOB ストレージ」を選択し、データソース名を入力し、「既存の接続を選択します」リンクをクリックします。
 
-ちなみに Azure Cognitive Search が対応しているデータソースには、Azure Cosmos DB や Azure SQL Database などがあり、2021 年 3 月には、[SharePoint Online (Preview)](https://docs.microsoft.com/azure/search/search-howto-index-sharepoint-online) にも対応しました。サポートしているデータソースの一覧は[こちら](https://docs.microsoft.com/azure/search/search-indexer-overview#supported-data-sources)にあります。
+ちなみに Azure AI Search が対応しているデータソースには、Azure Cosmos DB や Azure SQL Database などがあり、2021 年 3 月には、[SharePoint Online (Preview)](https://docs.microsoft.com/azure/search/search-howto-index-sharepoint-online) にも対応しました。サポートしているデータソースの一覧は[こちら](https://docs.microsoft.com/azure/search/search-indexer-overview#supported-data-sources)にあります。
 
 <img src="./media/010.jpg" />
 
@@ -233,7 +233,7 @@ OCR スキルはデフォルトで英語の設定になっているため、そ�
 
 # デモアプリの作成
 
-Azure Cognitive Search の機能は基本的に REST API での提供となりますが、デモのために簡易的な Web 検索フロントエンドを作成してくれる機能があります。検索エクスプローラー画面の上にある「デモ アプリの作成」ボタンをクリックしてください。
+Azure AI Search の機能は基本的に REST API での提供となりますが、デモのために簡易的な Web 検索フロントエンドを作成してくれる機能があります。検索エクスプローラー画面の上にある「デモ アプリの作成」ボタンをクリックしてください。
 
 <img src="./media/019.jpg" />
 
@@ -260,5 +260,5 @@ Azure Cognitive Search の機能は基本的に REST API での提供となり�
 ただしこのデモアプリ、完成度があまり高くなく、機能も限られるため本ハンズオンでは、[Simple Cognitive Search Tester](/gui) を利用します。
 
 # まとめ
-以上で、Azure Portal 上で Azure Cognitive Search のインデックス作成から検索までの流れを体験いただきました。
+以上で、Azure Portal 上で Azure AI Search のインデックス作成から検索までの流れを体験いただきました。
 この次は、[Postman を使った REST API 経由での作成方法](UsingPostman.md)についてご紹介したいと思います。
